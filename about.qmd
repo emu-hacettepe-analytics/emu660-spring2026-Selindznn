@@ -3,7 +3,7 @@ title: "About Me"
 sidebar: false 
 ---
 
-![](assets/images/V-49901.jpg){fig-align="center" fig-width=180}
+![](assets/images/V-49901.jpg){fig-align="center" fig-width="180"}
 
 # Education
 
@@ -11,11 +11,9 @@ sidebar: false
 -   M.S., Data and Information Engineering (Non-Thesis), Hacettepe University, Turkey, 2023 - 2025.
 -   M.S., Industrial Engineering (Thesis), Hacettepe University, Turkey, 2025 - ongoing.
 
-
 ## Employements
 
 1.  Firm ASELSAN, position Planning Engineer, year 2022-Ongoing
-
 
 ## Internships
 
@@ -25,7 +23,7 @@ sidebar: false
 
 # Projects
 
-1.   Development of Budget Estimation Tool by Using Machine Learning Within KOVAN ERP
+1.  Development of Budget Estimation Tool by Using Machine Learning Within KOVAN ERP
 
 # Publications
 
@@ -33,9 +31,8 @@ Not Yet
 
 # Competencies
 
-R, Quarto, Git, Python, Matlab, 
+R, Quarto, Git, Python, Matlab,
 
 # Hobbies
 
 Playing violin, Swimming
-
