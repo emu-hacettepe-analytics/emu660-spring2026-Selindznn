@@ -36,3 +36,7 @@ R, Quarto, Git, Python, Matlab,
 # Hobbies
 
 Playing violin, Swimming
+
+---
+
+[Selin DUZEN CV](assets/SelinDUZEN.pdf)
