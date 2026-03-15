@@ -3,7 +3,7 @@ title: "About Me"
 sidebar: false 
 ---
 
-![](assets/images/V-49901.jpg){fig-align="center" fig-width="90"}
+![](assets/images/V-49901.jpg){fig-align="center" fig-width="5%"}
 
 # Education
 
