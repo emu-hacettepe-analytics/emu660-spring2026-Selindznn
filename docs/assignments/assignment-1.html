@@ -349,12 +349,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#assignment-1" id="toc-assignment-1" class="nav-link active" data-scroll-target="#assignment-1">Assignment 1</a>
   <ul class="collapse">
   <li><a href="#a" id="toc-a" class="nav-link" data-scroll-target="#a">(a)</a></li>
-  <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c">(c)</a></li>
+  <li><a href="#b" id="toc-b" class="nav-link" data-scroll-target="#b">(b)</a></li>
+  <li><a href="#c-mtcars" id="toc-c-mtcars" class="nav-link" data-scroll-target="#c-mtcars">(c) mtcars</a></li>
   </ul></li>
   <li><a href="#applying-the-function-using-a-loop" id="toc-applying-the-function-using-a-loop" class="nav-link" data-scroll-target="#applying-the-function-using-a-loop">Applying the Function Using a Loop</a></li>
   <li><a href="#an-alternative-approach-with-sapply-and-apply" id="toc-an-alternative-approach-with-sapply-and-apply" class="nav-link" data-scroll-target="#an-alternative-approach-with-sapply-and-apply">An alternative approach with sapply and apply</a>
   <ul class="collapse">
-  <li><a href="#d" id="toc-d" class="nav-link" data-scroll-target="#d">(d)</a></li>
+  <li><a href="#d-polls_us_election_2016" id="toc-d-polls_us_election_2016" class="nav-link" data-scroll-target="#d-polls_us_election_2016">(d) polls_us_election_2016</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -388,14 +389,18 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="assignment-1" class="level1">
 <h1>Assignment 1</h1>
-<p>My first assignment has two parts.</p>
+<p>My first assignment has four parts.</p>
 <section id="a" class="level2">
 <h2 class="anchored" data-anchor-id="a">(a)</h2>
-<p>brief summary in your Quarto document: • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Kerem Demirtaş &amp; Erdi Dasdemir • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Cem Vardar &amp; Erdi Dasdemir • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Mustafa Baydoğan &amp; Erdi Daşdemir • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Baykal Hafızoğlu &amp; Erdi Daşdemir ## (b)</p>
-<p>From the video you chose, prepare one open-ended question and one multiple-choice question, along with their answers. I may include well-crafted questions in the midterm and final exams</p>
+<p>Video:</p>
+<p>Summary: It will be added later.</p>
 </section>
-<section id="c" class="level2">
-<h2 class="anchored" data-anchor-id="c">(c)</h2>
+<section id="b" class="level2">
+<h2 class="anchored" data-anchor-id="b">(b)</h2>
+<p>It will be added later.</p>
+</section>
+<section id="c-mtcars" class="level2">
+<h2 class="anchored" data-anchor-id="c-mtcars">(c) mtcars</h2>
 <pre><code>data(mtcars)
 head(mtcars)</code></pre>
 <pre><code># Write a Custom Summary Function
@@ -439,8 +444,8 @@ print(stats_sapply)</code></pre>
 df_matrix &lt;- as.matrix(just_numeric_cols)
 stats_apply &lt;- apply(df_matrix, 2, compute_stats)
 print(stats_apply)</code></pre>
-<section id="d" class="level2">
-<h2 class="anchored" data-anchor-id="d">(d)</h2>
+<section id="d-polls_us_election_2016" class="level2">
+<h2 class="anchored" data-anchor-id="d-polls_us_election_2016">(d) polls_us_election_2016</h2>
 <pre><code>install.packages("dslabs")
 library(dslabs)
 data(polls_us_election_2016) 

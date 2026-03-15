@@ -112,7 +112,7 @@
     "href": "assignments/assignment-1.html",
     "title": "Assignment 1",
     "section": "",
-    "text": "My first assignment has two parts.\n\n\nbrief summary in your Quarto document: • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Kerem Demirtaş & Erdi Dasdemir • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Cem Vardar & Erdi Dasdemir • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Mustafa Baydoğan & Erdi Daşdemir • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Baykal Hafızoğlu & Erdi Daşdemir ## (b)\nFrom the video you chose, prepare one open-ended question and one multiple-choice question, along with their answers. I may include well-crafted questions in the midterm and final exams\n\n\n\ndata(mtcars)\nhead(mtcars)\n# Write a Custom Summary Function\ncompute_stats &lt;- function(x) {\n   if(!is.numeric(x)) {\n     print(\"Sayısal Veri Girilmeli\")\n   }\n   \n   named_list &lt;- list(\n     mean     = mean(x),\n     median   = median(x),\n     variance = var(x),\n     iqr      = IQR(x),\n     min      = min(x),\n     max      = max(x)\n   )\n   \n   return(named_list)\n }\ncompute_stats(mtcars$cyl)",
+    "text": "My first assignment has four parts.\n\n\nVideo:\nSummary: It will be added later.\n\n\n\nIt will be added later.\n\n\n\ndata(mtcars)\nhead(mtcars)\n# Write a Custom Summary Function\ncompute_stats &lt;- function(x) {\n   if(!is.numeric(x)) {\n     print(\"Sayısal Veri Girilmeli\")\n   }\n   \n   named_list &lt;- list(\n     mean     = mean(x),\n     median   = median(x),\n     variance = var(x),\n     iqr      = IQR(x),\n     min      = min(x),\n     max      = max(x)\n   )\n   \n   return(named_list)\n }\ncompute_stats(mtcars$cyl)",
     "crumbs": [
       "Assignment 1"
     ]
@@ -132,7 +132,7 @@
     "href": "assignments/assignment-1.html#a",
     "title": "Assignment 1",
     "section": "",
-    "text": "brief summary in your Quarto document: • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Kerem Demirtaş & Erdi Dasdemir • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Cem Vardar & Erdi Dasdemir • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Mustafa Baydoğan & Erdi Daşdemir • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Baykal Hafızoğlu & Erdi Daşdemir ## (b)\nFrom the video you chose, prepare one open-ended question and one multiple-choice question, along with their answers. I may include well-crafted questions in the midterm and final exams",
+    "text": "Video:\nSummary: It will be added later.",
     "crumbs": [
       "Assignment 1"
     ]
@@ -153,6 +153,36 @@
     "title": "Assignment 1",
     "section": "(d)",
     "text": "(d)\ninstall.packages(\"dslabs\")\nlibrary(dslabs)\ndata(polls_us_election_2016) \nhead(polls_us_election_2016)\n# Display k rows of the original data set on your web page using this rule:\nmy_first &lt;- \"Selin\"\nmy_birth_year &lt;- 1999\nk &lt;- (nchar(my_first) + my_birth_year) %% 15 + 8\nprint(k)  \n\nif (k %% 2 == 0) { \n  display_k_value &lt;- head(polls_us_election_2016, k)\n  message &lt;- paste(\"k =\", k, \"adet ilk satırlar\")\n} else {\n  display_k_value &lt;- tail(polls_us_election_2016, k)\n  message &lt;- paste(\"k =\", k, \"adet son satırlar\")\n}\n\ncat(message, \"\\n\")\nprint(display_k_value)\n# Calculate and display:\nNA_total &lt;- sum(is.na(polls_us_election_2016))\ncat(\"Veri setindeki toplam NA sayısı:\", NA_total)\n\nNA_per_column &lt;- colSums(is.na(polls_us_election_2016))\nprint(NA_per_column)\n\nNA_sort &lt;- sort(NA_per_column, decreasing = TRUE)\n\ntop_8_na &lt;- head(NA_sort, 8)\n\ncat(\"Top 8 column:\")\nprint(top_8_na)\n#Replace all NA values in the data set as follows and store the result as a new object\nnew_polls_data &lt;- polls_us_election_2016\n\nnum_fill &lt;- my_birth_year + k\nchar_fill &lt;- paste0(my_first, \"_\", k)\n\n\nfor (col in names(new_polls_data))\n  if (is.numeric(news_polls_data[[col]])) \n    new_polls_data[[col]][is.na(new_polls_data[[col]])] &lt;- num_fill\n    \n  else if (is.character(new_polls_data[[col]]))\n  new_polls_data[[col]][is.na(new_polls_data[[col]])] &lt;- char_fill\n\ncat(\"Yeni durumdaki toplam NA sayısı:\", sum(is.na(new_polls_data)), \"\\n\")\n\nprint(head(new_polls_data, 10))\n#Display k rows of the new data frame using the exact same rule as above\nif (k %% 2 == 0) { \n  display_newk_value &lt;- head(new_polls_data, k)\n  message &lt;- paste(\"k =\", k, \"adet ilk satırlar\")\n} else {\n  display_newk_value &lt;- tail(new_polls_data, k)\n  message &lt;- paste(\"k =\", k, \"adet son satırlar\")\n}\n\ncat(message, \"\\n\")\nprint(display_newk_value)\ntotal_na_remaining &lt;- sum(is.na(new_polls_data))\nprint(\"Yeni veri çerçevesindeki toplam NA sayısı:\", total_na_remaining, \"\\n\")\n\ncheck_any_na &lt;- anyNA(new_polls_data)\nprint(check_any_na)",
+    "crumbs": [
+      "Assignment 1"
+    ]
+  },
+  {
+    "objectID": "assignments/assignment-1.html#b",
+    "href": "assignments/assignment-1.html#b",
+    "title": "Assignment 1",
+    "section": "",
+    "text": "It will be added later.",
+    "crumbs": [
+      "Assignment 1"
+    ]
+  },
+  {
+    "objectID": "assignments/assignment-1.html#c-mtcars",
+    "href": "assignments/assignment-1.html#c-mtcars",
+    "title": "Assignment 1",
+    "section": "",
+    "text": "data(mtcars)\nhead(mtcars)\n# Write a Custom Summary Function\ncompute_stats &lt;- function(x) {\n   if(!is.numeric(x)) {\n     print(\"Sayısal Veri Girilmeli\")\n   }\n   \n   named_list &lt;- list(\n     mean     = mean(x),\n     median   = median(x),\n     variance = var(x),\n     iqr      = IQR(x),\n     min      = min(x),\n     max      = max(x)\n   )\n   \n   return(named_list)\n }\ncompute_stats(mtcars$cyl)",
+    "crumbs": [
+      "Assignment 1"
+    ]
+  },
+  {
+    "objectID": "assignments/assignment-1.html#d-polls_us_election_2016",
+    "href": "assignments/assignment-1.html#d-polls_us_election_2016",
+    "title": "Assignment 1",
+    "section": "(d) polls_us_election_2016",
+    "text": "(d) polls_us_election_2016\ninstall.packages(\"dslabs\")\nlibrary(dslabs)\ndata(polls_us_election_2016) \nhead(polls_us_election_2016)\n# Display k rows of the original data set on your web page using this rule:\nmy_first &lt;- \"Selin\"\nmy_birth_year &lt;- 1999\nk &lt;- (nchar(my_first) + my_birth_year) %% 15 + 8\nprint(k)  \n\nif (k %% 2 == 0) { \n  display_k_value &lt;- head(polls_us_election_2016, k)\n  message &lt;- paste(\"k =\", k, \"adet ilk satırlar\")\n} else {\n  display_k_value &lt;- tail(polls_us_election_2016, k)\n  message &lt;- paste(\"k =\", k, \"adet son satırlar\")\n}\n\ncat(message, \"\\n\")\nprint(display_k_value)\n# Calculate and display:\nNA_total &lt;- sum(is.na(polls_us_election_2016))\ncat(\"Veri setindeki toplam NA sayısı:\", NA_total)\n\nNA_per_column &lt;- colSums(is.na(polls_us_election_2016))\nprint(NA_per_column)\n\nNA_sort &lt;- sort(NA_per_column, decreasing = TRUE)\n\ntop_8_na &lt;- head(NA_sort, 8)\n\ncat(\"Top 8 column:\")\nprint(top_8_na)\n#Replace all NA values in the data set as follows and store the result as a new object\nnew_polls_data &lt;- polls_us_election_2016\n\nnum_fill &lt;- my_birth_year + k\nchar_fill &lt;- paste0(my_first, \"_\", k)\n\n\nfor (col in names(new_polls_data))\n  if (is.numeric(news_polls_data[[col]])) \n    new_polls_data[[col]][is.na(new_polls_data[[col]])] &lt;- num_fill\n    \n  else if (is.character(new_polls_data[[col]]))\n  new_polls_data[[col]][is.na(new_polls_data[[col]])] &lt;- char_fill\n\ncat(\"Yeni durumdaki toplam NA sayısı:\", sum(is.na(new_polls_data)), \"\\n\")\n\nprint(head(new_polls_data, 10))\n#Display k rows of the new data frame using the exact same rule as above\nif (k %% 2 == 0) { \n  display_newk_value &lt;- head(new_polls_data, k)\n  message &lt;- paste(\"k =\", k, \"adet ilk satırlar\")\n} else {\n  display_newk_value &lt;- tail(new_polls_data, k)\n  message &lt;- paste(\"k =\", k, \"adet son satırlar\")\n}\n\ncat(message, \"\\n\")\nprint(display_newk_value)\ntotal_na_remaining &lt;- sum(is.na(new_polls_data))\nprint(\"Yeni veri çerçevesindeki toplam NA sayısı:\", total_na_remaining, \"\\n\")\n\ncheck_any_na &lt;- anyNA(new_polls_data)\nprint(check_any_na)",
     "crumbs": [
       "Assignment 1"
     ]

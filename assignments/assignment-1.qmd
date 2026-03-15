@@ -4,15 +4,18 @@ title: "Assignment 1"
 
 # Assignment 1
 
-My first assignment has two parts.
+My first assignment has four parts.
 
 ## (a)
 
-brief summary in your Quarto document: • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Kerem Demirtaş & Erdi Dasdemir • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Cem Vardar & Erdi Dasdemir • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Mustafa Baydoğan & Erdi Daşdemir • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Baykal Hafızoğlu & Erdi Daşdemir \## (b)
+Video: 
 
-From the video you chose, prepare one open-ended question and one multiple-choice question, along with their answers. I may include well-crafted questions in the midterm and final exams
+Summary: It will be added later.
 
-## (c)
+## (b)
+It will be added later.
+
+## (c) mtcars
 
 ```         
 data(mtcars)
@@ -69,7 +72,7 @@ stats_apply <- apply(df_matrix, 2, compute_stats)
 print(stats_apply)
 ```
 
-## (d)
+## (d) polls_us_election_2016
 
 ```         
 install.packages("dslabs")
