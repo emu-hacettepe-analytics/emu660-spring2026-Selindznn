@@ -84,7 +84,7 @@
     "href": "about.html#employements",
     "title": "About Me",
     "section": "Employements",
-    "text": "Employements\n\nFirm ASELSAN, position Planning Engineer, year 2022-Ongoing"
+    "text": "Employements\n\nASELSAN, Planning Engineer, 2022-Ongoing"
   },
   {
     "objectID": "about.html#internships",
@@ -186,5 +186,12 @@
     "crumbs": [
       "Assignment 1"
     ]
+  },
+  {
+    "objectID": "about.html#cv",
+    "href": "about.html#cv",
+    "title": "About Me",
+    "section": "# CV",
+    "text": "# CV\nSelin DUZEN CV"
   }
 ]
