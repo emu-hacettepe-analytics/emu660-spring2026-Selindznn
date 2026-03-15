@@ -4,12 +4,153 @@ title: "Assignment 1"
 
 # Assignment 1
 
-```{r}
-1 + 1
-```
-
 My first assignment has two parts.
 
 ## (a)
 
-## (b)
+brief summary in your Quarto document: • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Kerem Demirtaş & Erdi Dasdemir • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Cem Vardar & Erdi Dasdemir • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Mustafa Baydoğan & Erdi Daşdemir • Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Baykal Hafızoğlu & Erdi Daşdemir \## (b)
+
+From the video you chose, prepare one open-ended question and one multiple-choice question, along with their answers. I may include well-crafted questions in the midterm and final exams
+
+## (c)
+
+```         
+data(mtcars)
+head(mtcars)
+```
+
+```         
+# Write a Custom Summary Function
+compute_stats <- function(x) {
+   if(!is.numeric(x)) {
+     print("Sayısal Veri Girilmeli")
+   }
+   
+   named_list <- list(
+     mean     = mean(x),
+     median   = median(x),
+     variance = var(x),
+     iqr      = IQR(x),
+     min      = min(x),
+     max      = max(x)
+   )
+   
+   return(named_list)
+ }
+compute_stats(mtcars$cyl)
+```
+
+# Applying the Function Using a Loop
+
+```         
+df <- mtcars
+for (col_name in names(df)) {
+
+ if (is.numeric(df[[col_name]])) {
+ stats <- compute_stats(df[[col_name]])
+ cat("\n- Statistics for Column:", col_name, "-\n")
+ print(stats)
+ }
+}
+```
+
+# An alternative approach with sapply and apply
+
+```         
+just_numeric_cols <- df[sapply(df, is.numeric)]
+stats_sapply <- sapply(just_numeric_cols, compute_stats)
+print(stats_sapply)
+```
+
+```         
+# apply (x, MARGIN, FUN,,,,simplify= TRUE)
+df_matrix <- as.matrix(just_numeric_cols)
+stats_apply <- apply(df_matrix, 2, compute_stats)
+print(stats_apply)
+```
+
+## (d)
+
+```         
+install.packages("dslabs")
+library(dslabs)
+data(polls_us_election_2016) 
+head(polls_us_election_2016)
+```
+
+```         
+# Display k rows of the original data set on your web page using this rule:
+my_first <- "Selin"
+my_birth_year <- 1999
+k <- (nchar(my_first) + my_birth_year) %% 15 + 8
+print(k)  
+
+if (k %% 2 == 0) { 
+  display_k_value <- head(polls_us_election_2016, k)
+  message <- paste("k =", k, "adet ilk satırlar")
+} else {
+  display_k_value <- tail(polls_us_election_2016, k)
+  message <- paste("k =", k, "adet son satırlar")
+}
+
+cat(message, "\n")
+print(display_k_value)
+```
+
+```         
+# Calculate and display:
+NA_total <- sum(is.na(polls_us_election_2016))
+cat("Veri setindeki toplam NA sayısı:", NA_total)
+
+NA_per_column <- colSums(is.na(polls_us_election_2016))
+print(NA_per_column)
+
+NA_sort <- sort(NA_per_column, decreasing = TRUE)
+
+top_8_na <- head(NA_sort, 8)
+
+cat("Top 8 column:")
+print(top_8_na)
+```
+
+```         
+#Replace all NA values in the data set as follows and store the result as a new object
+new_polls_data <- polls_us_election_2016
+
+num_fill <- my_birth_year + k
+char_fill <- paste0(my_first, "_", k)
+
+
+for (col in names(new_polls_data))
+  if (is.numeric(news_polls_data[[col]])) 
+    new_polls_data[[col]][is.na(new_polls_data[[col]])] <- num_fill
+    
+  else if (is.character(new_polls_data[[col]]))
+  new_polls_data[[col]][is.na(new_polls_data[[col]])] <- char_fill
+
+cat("Yeni durumdaki toplam NA sayısı:", sum(is.na(new_polls_data)), "\n")
+
+print(head(new_polls_data, 10))
+```
+
+```         
+#Display k rows of the new data frame using the exact same rule as above
+if (k %% 2 == 0) { 
+  display_newk_value <- head(new_polls_data, k)
+  message <- paste("k =", k, "adet ilk satırlar")
+} else {
+  display_newk_value <- tail(new_polls_data, k)
+  message <- paste("k =", k, "adet son satırlar")
+}
+
+cat(message, "\n")
+print(display_newk_value)
+```
+
+```         
+total_na_remaining <- sum(is.na(new_polls_data))
+print("Yeni veri çerçevesindeki toplam NA sayısı:", total_na_remaining, "\n")
+
+check_any_na <- anyNA(new_polls_data)
+print(check_any_na)
+```
