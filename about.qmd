@@ -38,3 +38,9 @@ R, Quarto, Git, Python, Matlab,
 # Hobbies
 
 Playing violin, Swimming
+
+
+
+[[*CV Download Link*]{.underline}](assets/Selin Düzen.pdf "CV Download Link"){target="_blank"}
+
+![](assets/Selin Düzen.pdf){fig-alt="Selin Düzen cv" fig-align="left"}
