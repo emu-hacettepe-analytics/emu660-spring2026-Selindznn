@@ -2,18 +2,21 @@
 title: "Assignment 1"
 ---
 
-# Assignment 1
-
-My first assignment has four parts.
+My first assignment has four (4) parts.
 
 ## (a)
 
-Video: 
+***Video:*** [Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Kerem Demirtaş & Erdi Dasdemir](https://www.youtube.com/watch?v=cUPtQEyaswM)
 
-Summary: It will be added later.
+***Summary:*** Data scientist Kerem Demirtaş, a guest on the video, discussed some misconceptions about data science. For example, he mentioned that data science isn't just statistics or just big data. He emphasized that combining statistics and, when necessary, big data with ML (Material Engineering), an engineering perspective, and industry and field expertise based on the data are all crucial. He also highlighted the importance of the human perspective in interpreting and analyzing data. When applying data science, after data collection and some cleaning stages, EDA (Electronic Data Analysis) is necessary for better understanding and interpretation. After understanding the statistical properties of the data, modeling the data and selecting and testing the model's success (underfitting/overfitting balance) are necessary. The guest also discussed his doctoral thesis, mentioning how autonomous vehicles optimize traffic by forming convoys (platooning). He explained how autonomous vehicles can communicate with each other to reduce following distances and how this increases road capacity. Additionally, simulations have shown how traffic flow can be improved with a centralized control mechanism in "mixed traffic" scenarios where human drivers and autonomous vehicles coexist.
 
 ## (b)
-It will be added later.
+
+***Q1:*** In data science, what does the exam example given in the video represent regarding the concept of 'Overfitting'? A. Failing to finish the exam on time B. Taking the exam without studying for the lectures C. Memorizing past questions and being unable to solve different questions D. Understanding the logic of the questions
+
+***Open-ended question:*** What is the "Abraham Wald and the bomber planes" example mentioned in the video for the "problem definition" stage in data science?
+
+***Answer:*** This example shows that focusing only on the visible data (the planes rotating) can be misleading. Avoiding survival bias, understanding the real issue—"where the downed planes didn't return"—leads to a more accurate problem definition and finding the right solution (where to add the armor).
 
 ## (c) mtcars
 
@@ -22,8 +25,9 @@ data(mtcars)
 head(mtcars)
 ```
 
+***\# Write a Custom Summary Function***
+
 ```         
-# Write a Custom Summary Function
 compute_stats <- function(x) {
    if(!is.numeric(x)) {
      print("Sayısal Veri Girilmeli")
@@ -43,7 +47,7 @@ compute_stats <- function(x) {
 compute_stats(mtcars$cyl)
 ```
 
-# Applying the Function Using a Loop
+***\# Applying the Function Using a Loop***
 
 ```         
 df <- mtcars
@@ -57,7 +61,7 @@ for (col_name in names(df)) {
 }
 ```
 
-# An alternative approach with sapply and apply
+***\# An alternative approach with sapply and apply***
 
 ```         
 just_numeric_cols <- df[sapply(df, is.numeric)]
@@ -66,9 +70,8 @@ print(stats_sapply)
 ```
 
 ```         
-# apply (x, MARGIN, FUN,,,,simplify= TRUE)
 df_matrix <- as.matrix(just_numeric_cols)
-stats_apply <- apply(df_matrix, 2, compute_stats)
+stats_apply <- apply(df_matrix, 2, compute_stats)  # apply (x, MARGIN, FUN,,,,simplify= TRUE)
 print(stats_apply)
 ```
 
@@ -81,13 +84,23 @@ data(polls_us_election_2016)
 head(polls_us_election_2016)
 ```
 
+***\# My Own Information***
+
 ```         
-# Display k rows of the original data set on your web page using this rule:
 my_first <- "Selin"
 my_birth_year <- 1999
+```
+
+***\# Define k rows***
+
+```         
 k <- (nchar(my_first) + my_birth_year) %% 15 + 8
 print(k)  
+```
 
+***\# Display k rows of the original data set on your web page using this rule***
+
+```         
 if (k %% 2 == 0) { 
   display_k_value <- head(polls_us_election_2016, k)
   message <- paste("k =", k, "adet ilk satırlar")
@@ -100,8 +113,9 @@ cat(message, "\n")
 print(display_k_value)
 ```
 
+***\# Calculate and display***
+
 ```         
-# Calculate and display:
 NA_total <- sum(is.na(polls_us_election_2016))
 cat("Veri setindeki toplam NA sayısı:", NA_total)
 
@@ -116,8 +130,9 @@ cat("Top 8 column:")
 print(top_8_na)
 ```
 
+***\# Replace all NA values in the data set as follows and store the result as a new object***
+
 ```         
-#Replace all NA values in the data set as follows and store the result as a new object
 new_polls_data <- polls_us_election_2016
 
 num_fill <- my_birth_year + k
@@ -136,8 +151,9 @@ cat("Yeni durumdaki toplam NA sayısı:", sum(is.na(new_polls_data)), "\n")
 print(head(new_polls_data, 10))
 ```
 
+***\# Display k rows of the new data frame using the exact same rule as above***
+
 ```         
-#Display k rows of the new data frame using the exact same rule as above
 if (k %% 2 == 0) { 
   display_newk_value <- head(new_polls_data, k)
   message <- paste("k =", k, "adet ilk satırlar")
@@ -151,9 +167,13 @@ print(display_newk_value)
 ```
 
 ```         
-total_na_remaining <- sum(is.na(new_polls_data))
+total_na_remaining <- sum(is.na(new_polls_data)) 
 print("Yeni veri çerçevesindeki toplam NA sayısı:", total_na_remaining, "\n")
+```
 
+***\# Check anyNA (new_polls_data) \<- FALSE***
+
+```         
 check_any_na <- anyNA(new_polls_data)
 print(check_any_na)
 ```

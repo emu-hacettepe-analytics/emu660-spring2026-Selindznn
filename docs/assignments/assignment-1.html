@@ -351,10 +351,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#a" id="toc-a" class="nav-link" data-scroll-target="#a">(a)</a></li>
   <li><a href="#b" id="toc-b" class="nav-link" data-scroll-target="#b">(b)</a></li>
   <li><a href="#c-mtcars" id="toc-c-mtcars" class="nav-link" data-scroll-target="#c-mtcars">(c) mtcars</a></li>
-  </ul></li>
-  <li><a href="#applying-the-function-using-a-loop" id="toc-applying-the-function-using-a-loop" class="nav-link" data-scroll-target="#applying-the-function-using-a-loop">Applying the Function Using a Loop</a></li>
-  <li><a href="#an-alternative-approach-with-sapply-and-apply" id="toc-an-alternative-approach-with-sapply-and-apply" class="nav-link" data-scroll-target="#an-alternative-approach-with-sapply-and-apply">An alternative approach with sapply and apply</a>
-  <ul class="collapse">
   <li><a href="#d-polls_us_election_2016" id="toc-d-polls_us_election_2016" class="nav-link" data-scroll-target="#d-polls_us_election_2016">(d) polls_us_election_2016</a></li>
   </ul></li>
   </ul>
@@ -389,22 +385,24 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="assignment-1" class="level1">
 <h1>Assignment 1</h1>
-<p>My first assignment has four parts.</p>
+<p>My first assignment has four (4) parts.</p>
 <section id="a" class="level2">
 <h2 class="anchored" data-anchor-id="a">(a)</h2>
-<p>Video:</p>
-<p>Summary: It will be added later.</p>
+<p><strong><em>Video:</em></strong> <a href="https://www.youtube.com/watch?v=cUPtQEyaswM">Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Kerem Demirtaş &amp; Erdi Dasdemir</a></p>
+<p><strong><em>Summary:</em></strong> Data scientist Kerem Demirtaş, a guest on the video, discussed some misconceptions about data science. For example, he mentioned that data science isn’t just statistics or just big data. He emphasized that combining statistics and, when necessary, big data with ML (Material Engineering), an engineering perspective, and industry and field expertise based on the data are all crucial. He also highlighted the importance of the human perspective in interpreting and analyzing data. When applying data science, after data collection and some cleaning stages, EDA (Electronic Data Analysis) is necessary for better understanding and interpretation. After understanding the statistical properties of the data, modeling the data and selecting and testing the model’s success (underfitting/overfitting balance) are necessary. The guest also discussed his doctoral thesis, mentioning how autonomous vehicles optimize traffic by forming convoys (platooning). He explained how autonomous vehicles can communicate with each other to reduce following distances and how this increases road capacity. Additionally, simulations have shown how traffic flow can be improved with a centralized control mechanism in “mixed traffic” scenarios where human drivers and autonomous vehicles coexist.</p>
 </section>
 <section id="b" class="level2">
 <h2 class="anchored" data-anchor-id="b">(b)</h2>
-<p>It will be added later.</p>
+<p><strong><em>Q1:</em></strong> In data science, what does the exam example given in the video represent regarding the concept of ‘Overfitting’? A. Failing to finish the exam on time B. Taking the exam without studying for the lectures C. Memorizing past questions and being unable to solve different questions D. Understanding the logic of the questions</p>
+<p><strong><em>Open-ended question:</em></strong> What is the “Abraham Wald and the bomber planes” example mentioned in the video for the “problem definition” stage in data science?</p>
+<p><strong><em>Answer:</em></strong> This example shows that focusing only on the visible data (the planes rotating) can be misleading. Avoiding survival bias, understanding the real issue—“where the downed planes didn’t return”—leads to a more accurate problem definition and finding the right solution (where to add the armor).</p>
 </section>
 <section id="c-mtcars" class="level2">
 <h2 class="anchored" data-anchor-id="c-mtcars">(c) mtcars</h2>
 <pre><code>data(mtcars)
 head(mtcars)</code></pre>
-<pre><code># Write a Custom Summary Function
-compute_stats &lt;- function(x) {
+<p><strong><em># Write a Custom Summary Function</em></strong></p>
+<pre><code>compute_stats &lt;- function(x) {
    if(!is.numeric(x)) {
      print("Sayısal Veri Girilmeli")
    }
@@ -421,10 +419,7 @@ compute_stats &lt;- function(x) {
    return(named_list)
  }
 compute_stats(mtcars$cyl)</code></pre>
-</section>
-</section>
-<section id="applying-the-function-using-a-loop" class="level1">
-<h1>Applying the Function Using a Loop</h1>
+<p><strong><em># Applying the Function Using a Loop</em></strong></p>
 <pre><code>df &lt;- mtcars
 for (col_name in names(df)) {
 
@@ -434,29 +429,28 @@ for (col_name in names(df)) {
  print(stats)
  }
 }</code></pre>
-</section>
-<section id="an-alternative-approach-with-sapply-and-apply" class="level1">
-<h1>An alternative approach with sapply and apply</h1>
+<p><strong><em># An alternative approach with sapply and apply</em></strong></p>
 <pre><code>just_numeric_cols &lt;- df[sapply(df, is.numeric)]
 stats_sapply &lt;- sapply(just_numeric_cols, compute_stats)
 print(stats_sapply)</code></pre>
-<pre><code># apply (x, MARGIN, FUN,,,,simplify= TRUE)
-df_matrix &lt;- as.matrix(just_numeric_cols)
-stats_apply &lt;- apply(df_matrix, 2, compute_stats)
+<pre><code>df_matrix &lt;- as.matrix(just_numeric_cols)
+stats_apply &lt;- apply(df_matrix, 2, compute_stats)  # apply (x, MARGIN, FUN,,,,simplify= TRUE)
 print(stats_apply)</code></pre>
+</section>
 <section id="d-polls_us_election_2016" class="level2">
 <h2 class="anchored" data-anchor-id="d-polls_us_election_2016">(d) polls_us_election_2016</h2>
 <pre><code>install.packages("dslabs")
 library(dslabs)
 data(polls_us_election_2016) 
 head(polls_us_election_2016)</code></pre>
-<pre><code># Display k rows of the original data set on your web page using this rule:
-my_first &lt;- "Selin"
-my_birth_year &lt;- 1999
-k &lt;- (nchar(my_first) + my_birth_year) %% 15 + 8
-print(k)  
-
-if (k %% 2 == 0) { 
+<p><strong><em># My Own Information</em></strong></p>
+<pre><code>my_first &lt;- "Selin"
+my_birth_year &lt;- 1999</code></pre>
+<p><strong><em># Define k rows</em></strong></p>
+<pre><code>k &lt;- (nchar(my_first) + my_birth_year) %% 15 + 8
+print(k)  </code></pre>
+<p><strong><em># Display k rows of the original data set on your web page using this rule</em></strong></p>
+<pre><code>if (k %% 2 == 0) { 
   display_k_value &lt;- head(polls_us_election_2016, k)
   message &lt;- paste("k =", k, "adet ilk satırlar")
 } else {
@@ -466,8 +460,8 @@ if (k %% 2 == 0) {
 
 cat(message, "\n")
 print(display_k_value)</code></pre>
-<pre><code># Calculate and display:
-NA_total &lt;- sum(is.na(polls_us_election_2016))
+<p><strong><em># Calculate and display</em></strong></p>
+<pre><code>NA_total &lt;- sum(is.na(polls_us_election_2016))
 cat("Veri setindeki toplam NA sayısı:", NA_total)
 
 NA_per_column &lt;- colSums(is.na(polls_us_election_2016))
@@ -479,8 +473,8 @@ top_8_na &lt;- head(NA_sort, 8)
 
 cat("Top 8 column:")
 print(top_8_na)</code></pre>
-<pre><code>#Replace all NA values in the data set as follows and store the result as a new object
-new_polls_data &lt;- polls_us_election_2016
+<p><strong><em># Replace all NA values in the data set as follows and store the result as a new object</em></strong></p>
+<pre><code>new_polls_data &lt;- polls_us_election_2016
 
 num_fill &lt;- my_birth_year + k
 char_fill &lt;- paste0(my_first, "_", k)
@@ -496,8 +490,8 @@ for (col in names(new_polls_data))
 cat("Yeni durumdaki toplam NA sayısı:", sum(is.na(new_polls_data)), "\n")
 
 print(head(new_polls_data, 10))</code></pre>
-<pre><code>#Display k rows of the new data frame using the exact same rule as above
-if (k %% 2 == 0) { 
+<p><strong><em># Display k rows of the new data frame using the exact same rule as above</em></strong></p>
+<pre><code>if (k %% 2 == 0) { 
   display_newk_value &lt;- head(new_polls_data, k)
   message &lt;- paste("k =", k, "adet ilk satırlar")
 } else {
@@ -507,10 +501,10 @@ if (k %% 2 == 0) {
 
 cat(message, "\n")
 print(display_newk_value)</code></pre>
-<pre><code>total_na_remaining &lt;- sum(is.na(new_polls_data))
-print("Yeni veri çerçevesindeki toplam NA sayısı:", total_na_remaining, "\n")
-
-check_any_na &lt;- anyNA(new_polls_data)
+<pre><code>total_na_remaining &lt;- sum(is.na(new_polls_data)) 
+print("Yeni veri çerçevesindeki toplam NA sayısı:", total_na_remaining, "\n")</code></pre>
+<p><strong><em># Check anyNA (new_polls_data) &lt;- FALSE</em></strong></p>
+<pre><code>check_any_na &lt;- anyNA(new_polls_data)
 print(check_any_na)</code></pre>
 
 
