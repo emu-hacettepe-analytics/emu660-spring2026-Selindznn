@@ -5,7 +5,10 @@ format:
   html:
     code-fold: true
     code-summary: "Show the code"
-    code-copy: true
+    toc: true             
+    toc-location: right   
+    number-sections: true
+    theme: cosmo        
     embed-resources: true
   pdf:
     colorlinks: true
@@ -16,6 +19,8 @@ format:
     margin-top: 2cm
     margin-bottom: 2cm
 ---
+
+
 
 Welcome to our project page.
 
@@ -62,7 +67,12 @@ xxxxxx
 ## 2.4 Preprocessing
 
 #Farklı excel verilerinde yer alan İllerin aldığı ve Verdiği Göç Değerlerinden Net Göç Hesaplanması ve verilerdeki char formatında yazılan boşluklu değerlerin numaric değerler olarak güncellenmesi işlemleri uygulanmıştır.
-
+    
+    ```{r}
+#| echo: true
+#| warning: false
+#| message: false
+    
 #install.packages("ggplot2") 
 #install.packages("dplyr")   
 library(ggplot2)
@@ -74,7 +84,8 @@ library(forcats)
 library(tidyr)
 
 # Net göç bilgisi hesaplama ve excel dosyası oluşturma
-
+    
+```
 VerilenGoc <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/VerilenGoc.xlsx", col_names = TRUE)
 AlinanGoc  <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/AlinanGoc.xlsx", col_names = TRUE)
 toplam_sutun <- ncol(VerilenGoc)
@@ -94,6 +105,7 @@ for (i in 3:toplam_sutun) {
 write_xlsx(fark_df, "C:/EMU660_Project/emu660-spring2026-Selindznn/NetGoc.xlsx")
 
 print(VerilenGoc[, 3:toplam_sutun])
+```
 
 # 3. Analysis
 
