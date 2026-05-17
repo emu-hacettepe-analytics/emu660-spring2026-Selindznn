@@ -57,12 +57,12 @@ The datasets used in the project are:
 
 4.[Net migration rate for provinces according to reasons for migration] Calculated as "Migration Outgoing - Migration Incoming" 
 
-3.[Life Index Rankings and Index Values by Province](https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=5IS1p1Z%2Btvlc0qxFhZzbC9g6NOWXugwdILs8mAMegx5w5sIpUqxydG6%2B5%2FWn1HGIIXJVqd%2Fwn%2B78duD2fsK84VEREA5Sn4QY5oeOWRHZRvVYOaDudiOCwll9hFpmp5W)
+3.[Life Index Rankings and Index Values by Province](https://www.sanayi.gov.tr/merkez-birimi/b94224510b7b/sege/il-sege-raporlari)
 
 
 ## 2.2 General Information About Data
 
-Our dataset tracks migration metrics across all 81 provinces of Türkiye from 2018 to 2024. It combines raw inbound/outbound migration figures with detailed columns explaining 12 different reasons for migration, cross-references them with the Turkish Statistical Institute's (TÜİK) comprehensive Life Index scores, and shows the relationships between them.
+Our dataset tracks migration metrics across all 81 provinces of Türkiye from 2018 to 2024. It combines raw inbound/outbound migration figures with detailed columns explaining 12 different reasons for migration, cross-references them with the Livability/Prosperity Data, Since the Turkish Statistical Institute’s (TÜİK) “Provincial Livability Index” is only available up to 2015, data from the Ministry of Industry and Technology’s SEGE (Socio-Economic Development Index) has been used. The 2025 Provincial SEGE Report was used and shows the relationships between them.
 
 ## 2.3 Reason of Choice
 
@@ -92,6 +92,12 @@ library(ggrepel)
 ```
 
 ### 2.4.1. Calculating net migration values and creating a separate Excel file and checking and correcting numerical values.
+
+In this section, we first performed data cleaning, and after cleaning, we applied the mathematical difference calculation to determine net migration.
+With `fark_df`, we can easily analyze which provinces have experienced net migration (if the result is positive, it means there has been outward migration) and which have received net migration (if the result is negative, it means there has been inward migration).
+There were invisible gaps in the TÜİK format data, and we cleaned all these gaps (\\s) with `str_replace_all` and converted it to a numeric format (as.numeric). 
+Net Migration Calculation: We created a new `fark_df` (Net Migration) matrix by subtracting the inward migration values from the given migration values and saved it as `NetGoc.xlsx`.
+
 ```{r}
 VerilenGoc <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/VerilenGoc.xlsx", col_names = TRUE)
 AlinanGoc  <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/AlinanGoc.xlsx", col_names = TRUE)
