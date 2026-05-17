@@ -47,28 +47,28 @@ Yaşanabilirlik Boyutlarının Etkisi: Yaşam endeksini oluşturan alt kırılı
 
 The datasets used in the project are: 
 
-1. [Population size of the provinces] (https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=btt%2FI0Npd%2BLvtOvCSZRIUZxbvXE3lIAf5bE6X3CdLQJxPknvezk%2BE6i3Md3GTPYHYMhzGdG2vbYkzOXomic6rY8F%2FyL8NGud1ChYCxoEgy5FkIT%2BMezMLoMVyKJUHwSgAQ%2BDeuZaUgEdXmyanOwSEQ%3D%3D)
+1. [Population size of the provinces] <https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=btt%2FI0Npd%2BLvtOvCSZRIUZxbvXE3lIAf5bE6X3CdLQJxPknvezk%2BE6i3Md3GTPYHYMhzGdG2vbYkzOXomic6rY8F%2FyL8NGud1ChYCxoEgy5FkIT%2BMezMLoMVyKJUHwSgAQ%2BDeuZaUgEdXmyanOwSEQ%3D%3D>
 
 2. [Migration received by provinces according to the reason for migration]
-(https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=%2FMyiBh3DmS%2Bv%2BBjCf9%2BzPq%2B96lw8HZTF50uTl9jqBks%2BK5WE6sQNt%2Fqka0J5%2BImWGTGxKxiPcrz7kNG6I3rKkrLi%2B8mZkMkz9reke8%2BHd%2Fo%3D)
+<https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=%2FMyiBh3DmS%2Bv%2BBjCf9%2BzPq%2B96lw8HZTF50uTl9jqBks%2BK5WE6sQNt%2Fqka0J5%2BImWGTGxKxiPcrz7kNG6I3rKkrLi%2B8mZkMkz9reke8%2BHd%2Fo%3D>
 
-3. [Migration rates by provinces according to the reason for migration] (https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=%2FMyiBh3DmS%2Bv%2BBjCf9%2BzPq%2B96lw8HZTF50uTl9jqBks%2BK5WE6sQNt%2Fqka0J5%2BImWGTGxKxiPcrz7kNG6I3rKkrLi%2B8mZkMkz9reke8%2BHd%2Fo%3D)
+3. [Migration rates by provinces according to the reason for migration] <https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=%2FMyiBh3DmS%2Bv%2BBjCf9%2BzPq%2B96lw8HZTF50uTl9jqBks%2BK5WE6sQNt%2Fqka0J5%2BImWGTGxKxiPcrz7kNG6I3rKkrLi%2B8mZkMkz9reke8%2BHd%2Fo%3D>
 
-4. [Net migration rate for provinces according to reasons for migration] "Migration Outgoing - Migration Incoming" Calculated
+4. [Net migration rate for provinces according to reasons for migration] Calculated as "Migration Outgoing - Migration Incoming" 
 
-5. [Life Index Rankings and Index Values by Province] (https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=5IS1p1Z%2Btvlc0qxFhZzbC9g6NOWXugwdILs8mAMegx5w5sIpUqxydG6%2B5%2FWn1HGIIXJVqd%2Fwn%2B78duD2fsK84VEREA5Sn4QY5oeOWRHZRvVYOaDudiOCwll9hFpmp5W8)
+5. [Life Index Rankings and Index Values by Province] <https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=5IS1p1Z%2Btvlc0qxFhZzbC9g6NOWXugwdILs8mAMegx5w5sIpUqxydG6%2B5%2FWn1HGIIXJVqd%2Fwn%2B78duD2fsK84VEREA5Sn4QY5oeOWRHZRvVYOaDudiOCwll9hFpmp5W8<
 
 ## 2.2 General Information About Data
 
-xxxxxx
+Our dataset tracks migration metrics across all 81 provinces of Türkiye from 2018 to 2024. It combines raw inbound/outbound migration figures with detailed columns explaining 12 different reasons for migration, cross-references them with the Turkish Statistical Institute's (TÜİK) comprehensive Life Index scores, and shows the relationships between them.
 
 ## 2.3 Reason of Choice
 
-xxxxxx
+We chose this data because migration cannot be explained solely by economic factors. By combining net migration metrics with the multidimensional Life Index (which assesses health, education, security, and environment), we can reveal the relationship between internal migration in Türkiye and life indices.
 
 ## 2.4 Preprocessing
 
-#The net migration values are calculated using migration data received and given by provinces in different Excel spreadsheets and the char formatted values containing spaces in the data were updated to numeric values.
+The net migration values are calculated using migration data received and given by provinces in different Excel spreadsheets and the char formatted values containing spaces in the data were updated to numeric values.
 
 ```{r}
 #install.packages("ggplot2") 
@@ -130,7 +130,7 @@ saveWorkbook(wb, hedef_yolu, overwrite = TRUE)
 ## 3.1 Exploratory Data Analysis
 
 ### 3.1.1. Changes in Total Migration Values by Year (2018-2024)
-#The changes in the total amount of migration over the years were shown graphically.
+The changes in the total amount of migration over the years were shown graphically.
 ```{r}
 grafik_verisi <- VerilenGoc[VerilenGoc[, 2] == "Toplam-Total", ]
 print(grafik_verisi)
@@ -152,7 +152,7 @@ ggplot(data = grafik_verisi, aes(x = yil, y = goc_miktari)) +
 ```
   
 ### 3.1.2. Changes in Total Migration Values by Year for Ankara Provience
-#The graphic shows the changes in total migration amounts over the years for Ankara province.
+The graphic shows the changes in total migration amounts over the years for Ankara province.
 
 ```{r}
 grafik_verisi <- VerilenGoc[VerilenGoc[, 2] == "Ankara", ]
@@ -197,7 +197,7 @@ ggplot(veri_2024, aes(x = Goc_Miktari_Bin, y = reorder(Il, Goc_Miktari_Bin))) +
 
 ### 3.1.4. Net Migration Figures of Provinces in 2024
 
-#A graphical representation of the calculation made using the previously calculated data given migration-received migration data.
+A graphical representation of the calculation made using the previously calculated data given migration-received migration data.
 
 ```{r}
 NetGoc  <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/NetGoc.xlsx",col_names = TRUE)
@@ -219,7 +219,7 @@ ggplot(veri_2024, aes(x = Goc_Miktari_Bin, y = reorder(Il, Goc_Miktari_Bin))) +
 ```
 ### 3.1.5. Graph showing the distribution of migration reasons that make up net migration data.
 
-#Migration reasons include: change of job, starting/finding a job, change of marital status/family-related reasons, better housing and living conditions, migration related to any member of the household/family, returning to family home/hometown, health/care, buying a house, retirement, other, and unknown.
+Migration reasons include: change of job, starting/finding a job, change of marital status/family-related reasons, better housing and living conditions, migration related to any member of the household/family, returning to family home/hometown, health/care, buying a house, retirement, other, and unknown.
 
 ```{r}
 NetGoc  <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/NetGoc.xlsx",col_names = TRUE)
@@ -262,7 +262,7 @@ print(goc_grafigi)
 
 ## 3.2 Trend Analysis
 
-#The graph shows the relational analysis between migration rate data and life indices of the provinces.
+The graph shows the relational analysis between migration rate data and life indices of the provinces.
 
 ```{r}
 yasam_df <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/YasamEndeksi.xlsx", col_names = TRUE)
@@ -292,8 +292,17 @@ print(grafik)
 
 ## 3.4 Results
 
-xxxxxx
+Our time series analysis (2018–2024) shows that overall migration numbers fluctuate significantly based on national economic shifts and major external events (e.g., pandemics, earthquakes). When we looking at major metropolitan areas like Ankara, we see a distinct pattern of high incoming and high outgoing figures, reflecting its status as a dynamic political and educational hub. 
+Our 2024 province-by-province breakdown confirms that the geographic distribution of migration in Turkey is highly polarized. A small cluster of economically dominant provinces acts as "Net Migration Champions," while a vast majority of eastern and rural provinces serve as continuous "Migration Sources. 
+The stacked column chart for 2024 reasons for migration provides crucial insights. Rather than simple employment changes ("Tayin/İş Değişikliği"), a massive portion of net migration is driven by:Education ("Eğitim"): Causing heavy youth mobility toward university cities.Better Housing and Living Conditions ("Daha İyi Konut/Yaşam") Indicating that families are moving reactively to secure better urban standards.Dependent Migration ("Haneye Bağımlı Göç")Showing that migration is rarely an individual choice but a household-level transition. 
+Our trend analysis using geom_smooth(method = "lm") reveals a positive correlation between a province's General Life Index and its Net Migration Rate.
+
 
 # 4. Results and Key Takeaways
 
-xxxxxx
+As the Life Index of a province increases, its net migration rate trends upward. This statistically demonstrates that safety, better healthcare, environmental quality.  
+
+The positive trend line between the Life Index and Net Migration proves that modern citizens actively seek out "livability"—safer streets, greener spaces, and better educational institutions for their children. Cities with high Life Indexes are facing massive population influxes. If left unmanaged, this will cause severe strain on metropolitan infrastructures (traffic, housing crises, environmental degradation). Meanwhile, some provinces lose their young, educated workforce (internal brain drain), making it harder for them to improve their regional development scores.
+
+Governments should focus on raising the localized "Life Index" components—such as building better hospitals, upgrading schools, and enhancing civic safety in negative-net-migration provinces—to encourage citizens to stay.
+
