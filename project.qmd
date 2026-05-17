@@ -30,7 +30,6 @@ Welcome to our project page.
 
 [Burcu BARIŞ](https://emu-hacettepe-analytics.github.io/emu660-spring2026-burcubaris/project.html)
 
-Keep an eye on this space to stay updated with my project activities.
 
 # 1. Project Overview and Scope
 
@@ -39,6 +38,7 @@ Migration is not merely the geographical displacement of individuals; it is also
 In this project, using TÜİK (Turkish Statistical Institute) data, we aim to examine the multidimensional relationship between Net Migration (Net Migration = Migrant Receiving - Migrant Giving) figures for all 81 provinces of Türkiye and the Livability Index indicators in these provinces using analytical methods. Our goal is to reveal, through data analytics and statistical models, which vital factors (economy, education, health, environmental quality, security, etc.) cause people to leave their current cities or move to specific cities.
 
 *Creating Migration Profiles:* To identify the "Net Migration Champions" (provinces receiving the most net migrants) and "Migration Sources" (provinces giving the most net migrants) in Türkiye and to map them geographically.
+
 *The Impact of Livability Dimensions:* To statistically demonstrate which of the sub-components of the livability index (Income and Wealth, Health, Education, Environment, Security, etc.) are more dominant "push" or "pull" forces influencing migration decisions.
 
 # 2. Data
@@ -50,14 +50,14 @@ The datasets used in the project are:
 
 1.[Population size of the provinces](https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=btt%2FI0Npd%2BLvtOvCSZRIUZxbvXE3lIAf5bE6X3CdLQJxPknvezk%2BE6i3Md3GTPYHYMhzGdG2vbYkzOXomic6rY8F%2FyL8NGud1ChYCxoEgy5FkIT%2BMezMLoMVyKJUHwSgAQ%2BDeuZaUgEdXmyanOwSEQ%3D%3D)
 
-2. [Migration received by provinces according to the reason for migration]
-(https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=%2FMyiBh3DmS%2Bv%2BBjCf9%2BzPq%2B96lw8HZTF50uTl9jqBks%2BK5WE6sQNt%2Fqka0J5%2BImWGTGxKxiPcrz7kNG6I3rKkrLi%2B8mZkMkz9reke8%2BHd%2Fo%3D)
+2.[Migration received by provinces according to the reason for migration](https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=%2FMyiBh3DmS%2Bv%2BBjCf9%2BzPq%2B96lw8HZTF50uTl9jqBks%2BK5WE6sQNt%2Fqka0J5%2BImWGTGxKxiPcrz7kNG6I3rKkrLi%2B8mZkMkz9reke8%2BHd%2Fo%3D)
 
-3. [Migration rates by provinces according to the reason for migration] (https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=%2FMyiBh3DmS%2Bv%2BBjCf9%2BzPq%2B96lw8HZTF50uTl9jqBks%2BK5WE6sQNt%2Fqka0J5%2BImWGTGxKxiPcrz7kNG6I3rKkrLi%2B8mZkMkz9reke8%2BHd%2Fo%3D)
+3.[Migration rates by provinces according to the reason for migration](https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=%2FMyiBh3DmS%2Bv%2BBjCf9%2BzPq%2B96lw8HZTF50uTl9jqBks%2BK5WE6sQNt%2Fqka0J5%2BImWGTGxKxiPcrz7kNG6I3rKkrLi%2B8mZkMkz9reke8%2BHd%2Fo%3D)
 
-4. [Net migration rate for provinces according to reasons for migration] Calculated as "Migration Outgoing - Migration Incoming" 
+4.[Net migration rate for provinces according to reasons for migration] Calculated as "Migration Outgoing - Migration Incoming" 
 
-5. [Life Index Rankings and Index Values by Province] (https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=5IS1p1Z%2Btvlc0qxFhZzbC9g6NOWXugwdILs8mAMegx5w5sIpUqxydG6%2B5%2FWn1HGIIXJVqd%2Fwn%2B78duD2fsK84VEREA5Sn4QY5oeOWRHZRvVYOaDudiOCwll9hFpmp5W8)
+3.[Life Index Rankings and Index Values by Province](https://veriportali.tuik.gov.tr/api/tr/data/downloads?t=i&p=5IS1p1Z%2Btvlc0qxFhZzbC9g6NOWXugwdILs8mAMegx5w5sIpUqxydG6%2B5%2FWn1HGIIXJVqd%2Fwn%2B78duD2fsK84VEREA5Sn4QY5oeOWRHZRvVYOaDudiOCwll9hFpmp5W)
+
 
 ## 2.2 General Information About Data
 
