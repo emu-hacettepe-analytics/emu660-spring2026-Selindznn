@@ -26,6 +26,7 @@ execute:
 Welcome to our project page.
 
 **Our Team:**
+
 [Selin DÜZEN](https://emu-hacettepe-analytics.github.io/emu660-spring2026-Selindznn/project.html)
 
 [Burcu BARIŞ](https://emu-hacettepe-analytics.github.io/emu660-spring2026-burcubaris/project.html)
