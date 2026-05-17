@@ -4,10 +4,9 @@ title: "Project Göç Dinamikleri"
 format:
   html:
     code-fold: true
-    code-summary: "Show the code"
+    code-summary: "Code"
     toc: true             
-    toc-location: right   
-    number-sections: true
+    toc-location: left  
     theme: cosmo        
     embed-resources: true
   pdf:
@@ -68,10 +67,11 @@ xxxxxx
 
 #Farklı excel verilerinde yer alan İllerin aldığı ve Verdiği Göç Değerlerinden Net Göç Hesaplanması ve verilerdeki char formatında yazılan boşluklu değerlerin numaric değerler olarak güncellenmesi işlemleri uygulanmıştır.
 
-    
+```{r}
 #install.packages("ggplot2") 
 #install.packages("dplyr")   
 #install.packages("openxlsx")
+#install.packages("ggrepel")
 library(ggplot2)
 library(dplyr)
 library(readxl) 
@@ -80,10 +80,14 @@ library(stringr)
 library(forcats)
 library(tidyr)
 library(openxlsx)
-
+library(ggplot2)
+library(readxl)
+library(dplyr)
+library(ggrepel)
+```
 
 # Net göç bilgisi hesaplama ve excel dosyası oluşturma
-
+```{r}
 VerilenGoc <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/VerilenGoc.xlsx", col_names = TRUE)
 AlinanGoc  <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/AlinanGoc.xlsx", col_names = TRUE)
 toplam_sutun <- ncol(VerilenGoc)
@@ -103,9 +107,10 @@ for (i in 3:toplam_sutun) {
 write_xlsx(fark_df, "C:/EMU660_Project/emu660-spring2026-Selindznn/NetGoc.xlsx")
 
 print(VerilenGoc[, 3:toplam_sutun])
+```
 
 # İllerin populasyon verisi ile Net göç hızı hesaplama ve excel dosyası oluşturma
-
+```{r}
 kaynak_yolu <- "C:/EMU660_Project/emu660-spring2026-Selindznn/NetGoc.xlsx"
 hedef_yolu  <- "C:/EMU660_Project/emu660-spring2026-Selindznn/IlNufuslarii.xlsx"
 
@@ -119,12 +124,13 @@ writeData(wb, sheet = 1, x = "Net Göç", startCol = 3, startRow = 1, colNames =
 writeData(wb, sheet = 1, x = NetGocVerisi, startCol = 3, startRow = 2, colNames = FALSE)
 
 saveWorkbook(wb, hedef_yolu, overwrite = TRUE)
-
+```
 # 3. Analysis
 
 ## 3.1 Exploratory Data Analysis
 
 # Yıllara göre Toplam Verilen Göç Miktarı Değişimi
+```{r}
 grafik_verisi <- VerilenGoc[VerilenGoc[, 2] == "Toplam-Total", ]
 print(grafik_verisi)
 head(grafik_verisi)
@@ -142,9 +148,11 @@ ggplot(data = grafik_verisi, aes(x = yil, y = goc_miktari)) +
     x = "Yıl",
     y = "Göç Miktarı (x1.000)"
   )
-  
+```
   
 # Ankara için Yıllara Göre Toplam Verilen Göç Miktarı
+
+```{r}
 grafik_verisi <- VerilenGoc[VerilenGoc[, 2] == "Ankara", ]
 print(grafik_verisi)
 head(grafik_verisi)
@@ -162,9 +170,10 @@ ggplot(data = grafik_verisi, aes(x = yil, y = goc_miktari)) +
     x = "Yıl",
     y = "Göç Miktarı (x1.000)"
   )
-  
+```
 
 # 2024 yılı İllerin Alınan Göç Miktarları
+```{r}
 AlinanGoc  <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/AlinanGoc.xlsx",col_names = TRUE)
 
 colnames(AlinanGoc)[1:3] <- c("Yil", "Il", "Goc_Miktari")
@@ -181,8 +190,12 @@ ggplot(veri_2024, aes(x = Goc_Miktari_Bin, y = reorder(Il, Goc_Miktari_Bin))) +
     x = "Alınan Göç Miktarı (Bin Kişi)",
     y = "İller"
   )
-  
+```
+
+
 # 2024 yılı İllerin net Göç Miktarları
+
+```{r}
 NetGoc  <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/NetGoc.xlsx",col_names = TRUE)
 
 colnames(NetGoc)[1:3] <- c("Yil", "Il", "Goc_Miktari")
@@ -199,9 +212,10 @@ ggplot(veri_2024, aes(x = Goc_Miktari_Bin, y = reorder(Il, Goc_Miktari_Bin))) +
     x = "Net Göç Miktarı (Bin Kişi)",
     y = "İller"
   )  
-  
+```
 # göç nedenleri stacked halde gösterme
 
+```{r}
 NetGoc  <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/NetGoc.xlsx",col_names = TRUE)
 
 goc_nedenleri <- c("Tayin/Is Degisikligi", "Ise Baslamak/Is Bulmak", "Egitim", 
@@ -238,16 +252,12 @@ goc_grafigi <- ggplot(veri_uzun, aes(x = Miktar_Bin, y = reorder(Il, Toplam_Goc)
   guides(fill = guide_legend(ncol = 3))
   
 print(goc_grafigi)
-
+```
 
 ## 3.2 Trend Analysis
 
-#install.packages("ggrepel")
-library(ggplot2)
-library(readxl)
-library(dplyr)
-library(ggrepel) # Etiketlerin üst üste binmesini önlemek için
 
+```{r}
 yasam_df <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/YasamEndeksi.xlsx", col_names = TRUE)
 goc_df <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/Gochizi.xlsx", col_names = TRUE)
 
@@ -258,9 +268,9 @@ goc_2024 <- subset(goc_df, Yil == 2024 & Il != "Toplam-Total")
 
 veri_seti <- inner_join(yasam_df, goc_2024, by = "Il")
 
-grafik <- ggplot(veri_seti, aes(x = Endeks, y = Goc, label = Il)) + # label = Il eklendi
+grafik <- ggplot(veri_seti, aes(x = Endeks, y = Goc, label = Il)) + 
   geom_point(color = "#1f77b4", size = 3, alpha = 0.7) + 
-  geom_text_repel(size = 3, max.overlaps = 15) + # Noktaların üzerine il isimlerini akıllıca yerleştirir
+  geom_text_repel(size = 3, max.overlaps = 15) + 
   geom_smooth(method = "lm", color = "red", se = TRUE, formula = y ~ x) + 
   labs(
     title = "İl Yaşam Endeksi ve 2024 Net Göç Hızı İlişkisi",
@@ -270,6 +280,8 @@ grafik <- ggplot(veri_seti, aes(x = Endeks, y = Goc, label = Il)) + # label = Il
   theme_minimal()
 
 print(grafik)
+
+```
 
 ## 3.4 Results
 

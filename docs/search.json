@@ -17,43 +17,43 @@
     "objectID": "project.html#data-source",
     "href": "project.html#data-source",
     "title": "Project Göç Dinamikleri",
-    "section": "2.1 2.1 Data Source",
-    "text": "2.1 2.1 Data Source\nxxxxxx"
+    "section": "2.1 Data Source",
+    "text": "2.1 Data Source\nxxxxxx"
   },
   {
     "objectID": "project.html#general-information-about-data",
     "href": "project.html#general-information-about-data",
     "title": "Project Göç Dinamikleri",
-    "section": "2.2 2.2 General Information About Data",
-    "text": "2.2 2.2 General Information About Data\nxxxxxx"
+    "section": "2.2 General Information About Data",
+    "text": "2.2 General Information About Data\nxxxxxx"
   },
   {
     "objectID": "project.html#reason-of-choice",
     "href": "project.html#reason-of-choice",
     "title": "Project Göç Dinamikleri",
-    "section": "2.3 2.3 Reason of Choice",
-    "text": "2.3 2.3 Reason of Choice\nxxxxxx"
+    "section": "2.3 Reason of Choice",
+    "text": "2.3 Reason of Choice\nxxxxxx"
   },
   {
     "objectID": "project.html#preprocessing",
     "href": "project.html#preprocessing",
     "title": "Project Göç Dinamikleri",
-    "section": "2.4 2.4 Preprocessing",
-    "text": "2.4 2.4 Preprocessing\n#Farklı excel verilerinde yer alan İllerin aldığı ve Verdiği Göç Değerlerinden Net Göç Hesaplanması ve verilerdeki char formatında yazılan boşluklu değerlerin numaric değerler olarak güncellenmesi işlemleri uygulanmıştır.\n#install.packages(“ggplot2”) #install.packages(“dplyr”)\n#install.packages(“openxlsx”) library(ggplot2) library(dplyr) library(readxl) library(writexl) library(stringr) library(forcats) library(tidyr) library(openxlsx)"
+    "section": "2.4 Preprocessing",
+    "text": "2.4 Preprocessing\n#Farklı excel verilerinde yer alan İllerin aldığı ve Verdiği Göç Değerlerinden Net Göç Hesaplanması ve verilerdeki char formatında yazılan boşluklu değerlerin numaric değerler olarak güncellenmesi işlemleri uygulanmıştır.\n\n\nCode\n#install.packages(\"ggplot2\") \n#install.packages(\"dplyr\")   \n#install.packages(\"openxlsx\")\n#install.packages(\"ggrepel\")\nlibrary(ggplot2)\nlibrary(dplyr)\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\nCode\nlibrary(readxl) \nlibrary(writexl) \nlibrary(stringr)\nlibrary(forcats)\nlibrary(tidyr)\nlibrary(openxlsx)\nlibrary(ggplot2)\nlibrary(readxl)\nlibrary(dplyr)\nlibrary(ggrepel)"
   },
   {
     "objectID": "project.html#exploratory-data-analysis",
     "href": "project.html#exploratory-data-analysis",
     "title": "Project Göç Dinamikleri",
-    "section": "5.1 3.1 Exploratory Data Analysis",
-    "text": "5.1 3.1 Exploratory Data Analysis"
+    "section": "3.1 Exploratory Data Analysis",
+    "text": "3.1 Exploratory Data Analysis"
   },
   {
     "objectID": "project.html#trend-analysis",
     "href": "project.html#trend-analysis",
     "title": "Project Göç Dinamikleri",
-    "section": "10.1 3.2 Trend Analysis",
-    "text": "10.1 3.2 Trend Analysis\n#install.packages(“ggrepel”) library(ggplot2) library(readxl) library(dplyr) library(ggrepel) # Etiketlerin üst üste binmesini önlemek için\nyasam_df &lt;- read_excel(“C:/EMU660_Project/emu660-spring2026-Selindznn/YasamEndeksi.xlsx”, col_names = TRUE) goc_df &lt;- read_excel(“C:/EMU660_Project/emu660-spring2026-Selindznn/Gochizi.xlsx”, col_names = TRUE)\ncolnames(yasam_df)[1:2] &lt;- c(“Il”, “Endeks”) colnames(goc_df)[1:3] &lt;- c(“Yil”, “Il”, “Goc”)\ngoc_2024 &lt;- subset(goc_df, Yil == 2024 & Il != “Toplam-Total”)\nveri_seti &lt;- inner_join(yasam_df, goc_2024, by = “Il”)\ngrafik &lt;- ggplot(veri_seti, aes(x = Endeks, y = Goc, label = Il)) + # label = Il eklendi geom_point(color = “#1f77b4”, size = 3, alpha = 0.7) + geom_text_repel(size = 3, max.overlaps = 15) + # Noktaların üzerine il isimlerini akıllıca yerleştirir geom_smooth(method = “lm”, color = “red”, se = TRUE, formula = y ~ x) + labs( title = “İl Yaşam Endeksi ve 2024 Net Göç Hızı İlişkisi”, x = “Genel Yaşam Endeksi”, y = “Net Göç Hızı (‰)” ) + theme_minimal()\nprint(grafik)"
+    "section": "3.2 Trend Analysis",
+    "text": "3.2 Trend Analysis\n\n\nCode\nyasam_df &lt;- read_excel(\"C:/EMU660_Project/emu660-spring2026-Selindznn/YasamEndeksi.xlsx\", col_names = TRUE)\ngoc_df &lt;- read_excel(\"C:/EMU660_Project/emu660-spring2026-Selindznn/Gochizi.xlsx\", col_names = TRUE)\n\ncolnames(yasam_df)[1:2] &lt;- c(\"Il\", \"Endeks\")\ncolnames(goc_df)[1:3]   &lt;- c(\"Yil\", \"Il\", \"Goc\")\n\ngoc_2024 &lt;- subset(goc_df, Yil == 2024 & Il != \"Toplam-Total\")\n\nveri_seti &lt;- inner_join(yasam_df, goc_2024, by = \"Il\")\n\ngrafik &lt;- ggplot(veri_seti, aes(x = Endeks, y = Goc, label = Il)) + \n  geom_point(color = \"#1f77b4\", size = 3, alpha = 0.7) + \n  geom_text_repel(size = 3, max.overlaps = 15) + \n  geom_smooth(method = \"lm\", color = \"red\", se = TRUE, formula = y ~ x) + \n  labs(\n    title = \"İl Yaşam Endeksi ve 2024 Net Göç Hızı İlişkisi\",\n    x = \"Genel Yaşam Endeksi\",\n    y = \"Net Göç Hızı (‰)\"\n  ) +\n  theme_minimal()\n\nprint(grafik)\n\n\nWarning: The following aesthetics were dropped during statistical transformation: label.\nℹ This can happen when ggplot fails to infer the correct grouping structure in\n  the data.\nℹ Did you forget to specify a `group` aesthetic or to convert a numerical\n  variable into a factor?"
   },
   {
     "objectID": "project.html#model-fitting",
@@ -66,8 +66,8 @@
     "objectID": "project.html#results",
     "href": "project.html#results",
     "title": "Project Göç Dinamikleri",
-    "section": "10.2 3.4 Results",
-    "text": "10.2 3.4 Results\nxxxxxx"
+    "section": "3.4 Results",
+    "text": "3.4 Results\nxxxxxx"
   },
   {
     "objectID": "assignments.html",
