@@ -1,5 +1,5 @@
 ---
-title: "Project X"
+title: "Project Göç Dinamikleri"
 
 format:
   html:
@@ -21,12 +21,14 @@ format:
 ---
 
 
-
 Welcome to our project page.
 
-Keep an eye on this space to stay updated with my project activities.
+Our Team:
 
-(The titles below are provided as examples; please feel free to adjust them as necessary.)
+Selin DÜZEN
+Burcu BARIŞ
+
+Keep an eye on this space to stay updated with my project activities.
 
 # 1. Project Overview and Scope
 
@@ -44,13 +46,12 @@ xxxxxx
 
 #veri seti, veri kümenizi açıklayın. Herhangi bir tam analiz yapmanız veya sonuç çıkarmanız gerekmemekle birlikte, verilere kapsamlı bir genel bakış sunmayı hedefleyin—sütunların ne anlama geldiğini, değerlerin nasıl dağıldığını açıklayın ve potansiyel analizler hakkında fikirlerinizi paylaşın. Özlü tutun, bazı grafikler ekleyebilirsiniz.
 
-6.  
 
 1. İllerin yıllara sari popülasyon değeri
 2. Göç etme nedenlerine göre illerin aldığı göç miktarı
 3. Göç etme nedenlerine göre illerin verdiği göç miktarı
 4. Göç etme nedenlerine göre illerin net göç miktarı
-5. 
+
 
 ## 2.1 Data Source
 
@@ -67,14 +68,11 @@ xxxxxx
 ## 2.4 Preprocessing
 
 #Farklı excel verilerinde yer alan İllerin aldığı ve Verdiği Göç Değerlerinden Net Göç Hesaplanması ve verilerdeki char formatında yazılan boşluklu değerlerin numaric değerler olarak güncellenmesi işlemleri uygulanmıştır.
-    
-    ```{r}
-#| echo: true
-#| warning: false
-#| message: false
+
     
 #install.packages("ggplot2") 
 #install.packages("dplyr")   
+#install.packages("openxlsx")
 library(ggplot2)
 library(dplyr)
 library(readxl) 
@@ -82,18 +80,19 @@ library(writexl)
 library(stringr)
 library(forcats)
 library(tidyr)
+library(openxlsx)
+
 
 # Net göç bilgisi hesaplama ve excel dosyası oluşturma
-    
-```
+
 VerilenGoc <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/VerilenGoc.xlsx", col_names = TRUE)
 AlinanGoc  <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/AlinanGoc.xlsx", col_names = TRUE)
 toplam_sutun <- ncol(VerilenGoc)
 fark_df <- VerilenGoc 
 for (i in 3:toplam_sutun) {
   v_clean <- as.character(VerilenGoc[[i]])
-  v_clean <- str_replace_all(v_clean, "\\s", "") # Tüm boşlukları siler 
-  VerilenGoc[[i]] <- as.numeric(v_clean)         # R içinde Double formatına zorla
+  v_clean <- str_replace_all(v_clean, "\\s", "") 
+  VerilenGoc[[i]] <- as.numeric(v_clean)        
   a_clean <- as.character(AlinanGoc[[i]])
   a_clean <- str_replace_all(a_clean, "\\s", "")    
   AlinanGoc[[i]] <- as.numeric(a_clean)
@@ -105,10 +104,24 @@ for (i in 3:toplam_sutun) {
 write_xlsx(fark_df, "C:/EMU660_Project/emu660-spring2026-Selindznn/NetGoc.xlsx")
 
 print(VerilenGoc[, 3:toplam_sutun])
-```
+
+# İllerin populasyon verisi ile Net göç hızı hesaplama ve excel dosyası oluşturma
+
+kaynak_yolu <- "C:/EMU660_Project/emu660-spring2026-Selindznn/NetGoc.xlsx"
+hedef_yolu  <- "C:/EMU660_Project/emu660-spring2026-Selindznn/IlNufuslarii.xlsx"
+
+df_kaynak <- read_excel(kaynak_yolu, col_names = TRUE)
+
+NetGocVerisi <- df_kaynak[1:82, 3, drop = TRUE] 
+
+wb <- loadWorkbook(hedef_yolu)
+
+writeData(wb, sheet = 1, x = "Net Göç", startCol = 3, startRow = 1, colNames = FALSE)
+writeData(wb, sheet = 1, x = NetGocVerisi, startCol = 3, startRow = 2, colNames = FALSE)
+
+saveWorkbook(wb, hedef_yolu, overwrite = TRUE)
 
 # 3. Analysis
-
 
 ## 3.1 Exploratory Data Analysis
 
@@ -230,9 +243,11 @@ print(goc_grafigi)
 
 ## 3.2 Trend Analysis
 
+#install.packages("ggrepel")
+library(ggplot2)
 library(readxl)
 library(dplyr)
-library(ggplot2)
+library(ggrepel) # Etiketlerin üst üste binmesini önlemek için
 
 yasam_df <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/YasamEndeksi.xlsx", col_names = TRUE)
 goc_df <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/Gochizi.xlsx", col_names = TRUE)
@@ -243,8 +258,10 @@ colnames(goc_df)[1:3]   <- c("Yil", "Il", "Goc")
 goc_2024 <- subset(goc_df, Yil == 2024 & Il != "Toplam-Total")
 
 veri_seti <- inner_join(yasam_df, goc_2024, by = "Il")
-grafik <- ggplot(veri_seti, aes(x = Endeks, y = Goc)) +
+
+grafik <- ggplot(veri_seti, aes(x = Endeks, y = Goc, label = Il)) + # label = Il eklendi
   geom_point(color = "#1f77b4", size = 3, alpha = 0.7) + 
+  geom_text_repel(size = 3, max.overlaps = 15) + # Noktaların üzerine il isimlerini akıllıca yerleştirir
   geom_smooth(method = "lm", color = "red", se = TRUE, formula = y ~ x) + 
   labs(
     title = "İl Yaşam Endeksi ve 2024 Net Göç Hızı İlişkisi",
@@ -254,7 +271,6 @@ grafik <- ggplot(veri_seti, aes(x = Endeks, y = Goc)) +
   theme_minimal()
 
 print(grafik)
-
 
 ## 3.4 Results
 
