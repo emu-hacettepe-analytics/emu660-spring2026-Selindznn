@@ -17,7 +17,6 @@ format:
     margin-bottom: 2cm
 ---
 
-
 Welcome to our project page.
 
 Keep an eye on this space to stay updated with my project activities.
@@ -219,7 +218,6 @@ print(goc_grafigi)
 
 ## 3.2 Trend Analysis
 
-
 library(readxl)
 library(dplyr)
 library(ggplot2)
@@ -229,7 +227,6 @@ goc_df <- read_excel("C:/EMU660_Project/emu660-spring2026-Selindznn/Gochizi.xlsx
 
 colnames(yasam_df)[1:2] <- c("Il", "Endeks")
 colnames(goc_df)[1:3]   <- c("Yil", "Il", "Goc")
-
 
 goc_2024 <- subset(goc_df, Yil == 2024 & Il != "Toplam-Total")
 
