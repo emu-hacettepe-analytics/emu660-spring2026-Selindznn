@@ -2,7 +2,7 @@
 title: "Assignment 1"
 ---
 
-My first assignment has four (4) parts.
+My first assignment has four (4) parts. 1-4
 
 ## (a)
 
